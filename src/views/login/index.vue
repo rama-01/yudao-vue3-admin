@@ -2,7 +2,7 @@
   <div class="w-full h-full flex justify-center items-center">
     <el-card class="w-1/3 max-w-md">
       <el-form ref="loginFormRef" :model="loginForm" :rules="rules" :size="formSize" status-icon>
-        <el-form-item prop="tenantName">
+        <el-form-item>
           <el-input v-model="loginForm.tenantName" />
         </el-form-item>
         <el-form-item prop="username">
@@ -21,6 +21,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
+// import { getCode } from '@/api/login'
 interface ILoginForm {
   tenantName: string
   username: string
@@ -49,4 +50,7 @@ const rules = reactive<FormRules<ILoginForm>>({
     }
   ]
 })
+
+// 获取验证码
+// getCode().then((res) => console.log(res))
 </script>
