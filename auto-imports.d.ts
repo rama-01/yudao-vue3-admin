@@ -6,4 +6,5 @@
 export {}
 declare global {
   const useI18n: (typeof import('@/hooks/web/useI18n'))['useI18n']
+  const useRouter: (typeof import('vue-router'))['useRouter']
 }

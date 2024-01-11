@@ -79,7 +79,8 @@
 import { aesEncrypt } from './../utils/ase'
 import { resetSize } from './../utils/util'
 import { getCode, reqCheck } from '@/api/login'
-import {useI18n} from '../../../../hooks/web/useI18n'
+import { useI18n } from '../../../../hooks/web/useI18n'
+import {toRefs,getCurrentInstance,ref,reactive,computed,watch,onMounted,nextTick} from 'vue'
 
 
 const props = defineProps({

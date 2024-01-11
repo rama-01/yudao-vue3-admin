@@ -7,3 +7,12 @@ export type TokenType = {
   clientId: string //客户端编号
   expiresTime: number //过期时间
 }
+
+export type UserLoginVO = {
+  username: string
+  password: string
+  captchaVerification: string
+  socialType?: string
+  socialCode?: string
+  socialState?: string
+}

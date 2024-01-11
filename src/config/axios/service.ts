@@ -14,6 +14,7 @@ service.interceptors.request.use(
     if (getAccessToken()) {
       config.headers.Authorization = 'Bearer ' + getAccessToken()
     }
+    config.headers['Tenant-Id'] = 1
     return config
   },
   (error: AxiosError) => {
