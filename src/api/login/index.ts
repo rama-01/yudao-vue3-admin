@@ -12,8 +12,13 @@ export const reqCheck = (data) =>
 export const login = (data: UserLoginVO) =>
   request.post({ url: '/admin-api/system/auth/login', data })
 
+// 登出系统
+export const loginOut = () => request.post({ url: '/admin-api/system/auth/logout' })
+
 // 获取登录用户权限信息
 export const getPermissionInfo = () =>
   request.get({
     url: '/admin-api/system/auth/get-permission-info'
   })
+
+export const getInfo = () => request.get({ url: '/admin-api/system/user/profile/get' })

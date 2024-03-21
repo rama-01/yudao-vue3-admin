@@ -13,7 +13,6 @@
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item>布局设置</el-dropdown-item>
             <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -21,3 +20,23 @@
     </div>
   </div>
 </template>
+<script lang="ts" setup>
+import { useUserStore } from '@/store/modules/user'
+import { useRouter } from 'vue-router'
+import { ElMessageBox } from 'element-plus'
+
+const { replace } = useRouter()
+const userStore = useUserStore()
+const logout = async () => {
+  ElMessageBox.confirm('是否退出本系统?', '温馨提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  })
+    .then(async () => {
+      await userStore.loginOut()
+      replace({ path: '/login' })
+    })
+    .catch(() => {})
+}
+</script>
