@@ -35,7 +35,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
-import { login } from '@/api/login' //ts6307
+import { login } from '@/api/login' 
 import * as authUtil from '@/utils/auth'
 import { useRouter } from 'vue-router'
 const { push } = useRouter()

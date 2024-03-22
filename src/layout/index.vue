@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import SideBar from './components/sidebar/Menu.vue'
-import NavBar from './components/navbar/index.vue'
-import TagsView from './components/tags-view/index.vue'
-import AppMain from './components/app-main/index.vue'
+import SideBar from './components/sidebar'
+import NavBar from './components/navbar'
+import TagsView from './components/tags-view'
+import AppMain from './components/app-main'
 </script>

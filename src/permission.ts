@@ -17,7 +17,6 @@ router.beforeEach(async (to, from, next) => {
       const userStore = useUserStoreWithOut()
       const permissionStore = usePermissionStoreWithOut()
       if (!userStore.getIsSetUser) {
-        // console.log('set user info');
         // 设置用户信息
         await userStore.setUserInfoAction()
         // 后端过滤菜单,设置权限路由

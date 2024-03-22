@@ -1,3 +1,4 @@
+import type { App } from 'vue'
 import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router'
 import Layout from '@/layout/index.vue'
 
@@ -17,7 +18,7 @@ export const constantRoutes: AppRouteRecordRaw[] = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/dashboard/index.vue'),
+        component: () => import('@/views/home/index.vue'),
         name: 'Index',
         meta: {}
       }
@@ -31,5 +32,9 @@ const router = createRouter({
   routes: constantRoutes as RouteRecordRaw[],
   scrollBehavior: () => ({ left: 0, top: 0 }) //切换路由时总是将页面滚动到顶部
 })
+
+export const setupRouter = (app: App<Element>) => {
+  app.use(router)
+}
 
 export default router

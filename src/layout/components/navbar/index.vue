@@ -2,7 +2,6 @@
   <div class="flex justify-between items-center">
     <div>
       <el-icon><Fold /></el-icon>
-      <el-icon><Expand /></el-icon>
     </div>
     <div class="flex items-center">
       <img alt="avatar" class="w-9 h-9 rounded-full mr-1" src="@/assets/images/avatar.png" />

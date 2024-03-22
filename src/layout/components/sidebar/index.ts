@@ -1,3 +1,3 @@
-import Menu from './src/Menu.vue'
+import SideBar from './Menu.vue'
 
-export { Menu }
+export default SideBar

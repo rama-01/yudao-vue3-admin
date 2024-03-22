@@ -4,6 +4,6 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { getPermissionInfo } from '@/api/login';
-getPermissionInfo()
+import { getPermissionInfo } from '@/api/login'
+getPermissionInfo().then((res) => console.log(res))
 </script>
