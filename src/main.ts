@@ -7,6 +7,7 @@ import 'element-plus/dist/index.css' //element plus样式文件，需要全局�
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import './permission'
 
+
 // 创建实例
 const setupAll = async () => {
   const app = createApp(App)

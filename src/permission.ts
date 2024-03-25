@@ -8,6 +8,7 @@ import { RouteRecordRaw } from 'vue-router'
 const whiteList = ['/login']
 
 router.beforeEach(async (to, from, next) => {
+  // debugger
   if (getAccessToken()) {
     if (to.path === '/login') {
       next('/')
@@ -16,7 +17,7 @@ router.beforeEach(async (to, from, next) => {
       // 获取并设置字典
       const userStore = useUserStoreWithOut()
       const permissionStore = usePermissionStoreWithOut()
-      if (!userStore.getIsSetUser) {
+      if (!userStore.getIsSetUser) {  //error
         // 设置用户信息
         await userStore.setUserInfoAction()
         // 后端过滤菜单,设置权限路由

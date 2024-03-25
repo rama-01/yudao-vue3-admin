@@ -39,7 +39,6 @@ export const usePermissionStore = defineStore('permission', {
           res = wsCache.get(CACHE_KEY.ROLE_ROUTERS) as AppCustomRouteRecordRaw[]
         }
         const routerMap: AppRouteRecordRaw[] = generateRoute(res)
-        console.log(routerMap)
         // 动态路由，404一定要放到最后面
         this.addRouters = routerMap.concat([
           {
@@ -54,8 +53,6 @@ export const usePermissionStore = defineStore('permission', {
         ])
         // 渲染菜单的所有路由
         this.routers = cloneDeep(constantRoutes).concat(routerMap)
-        console.log(this.routers)
-
         resolve()
       })
     },

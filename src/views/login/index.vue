@@ -80,9 +80,6 @@ const captchaType = ref('blockPuzzle') // blockPuzzle 滑块 clickWord 点击文
 
 /* 1.打开验证码弹窗 2.验证通过调用登录接口 */
 const handleLogin = (params) => {
-  console.log('params', params)
-  // getCode()
-  // console.log(params)
   if (params.captchaVerification) {
     loginForm.captchaVerification = params.captchaVerification
   }

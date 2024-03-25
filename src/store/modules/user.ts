@@ -53,7 +53,6 @@ export const useUserStore = defineStore('admin-user', {
       if (!userInfo) {
         userInfo = await getPermissionInfo()
       }
-      console.log(userInfo)
 
       this.permissions = userInfo.permissions
       this.roles = userInfo.roles
