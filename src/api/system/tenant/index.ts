@@ -25,3 +25,15 @@ export interface TenantPageReqVO extends PageParam {
 
 export const getTenantList = (params: TenantPageReqVO) =>
   request.get({ url: '/admin-api/system/tenant/page', params })
+
+export const deleteTenant = (id: number) =>
+  request.delete({ url: '/admin-api/system/tenant/delete', params: { id } })
+
+export const createTenant = (data) =>
+  request.post({ url: '/admin-api/system/tenant/create', data })
+
+export const getSingleTenant = (id: number) =>
+  request.get({ url: '/admin-api/system/tenant/get', params: { id } })
+
+export const updateTenant = (data) =>
+  request.put({ url: '/admin-api/system/tenant/update', data })
