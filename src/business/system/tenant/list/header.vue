@@ -4,7 +4,7 @@
     :model="searchParams"
     :inline="true"
     label-width="68px"
-    class="border border-slate-200 p-5 shadow-sm mb-4"
+    class="bg-white p-5 shadow-sm mb-4"
   >
     <el-form-item label="租户名" prop="name">
       <el-input v-model="searchParams.name" placeholder="请输入用户名" />

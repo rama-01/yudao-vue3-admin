@@ -1,9 +1,9 @@
 <template>
-  <div class="">
-    <div v-for="item in 1000" :key="item">hello world</div>
-  </div>
+  <p v-for="(item, index) in data" :key="index">{{ item }}</p>
 </template>
 <script lang="ts" setup>
-import { getPermissionInfo } from '@/api/login'
-getPermissionInfo().then((res) => console.log(res))
+const data = ref<number[]>([])
+for (let i = 0; i < 10000; i++) {
+  data.value.push(i)
+}
 </script>

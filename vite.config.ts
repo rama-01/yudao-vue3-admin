@@ -19,7 +19,7 @@ export default defineConfig({
     AutoImport({
       // Auto import functions from Vue, e.g. ref, reactive, toRef...
       // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
-      imports: ['vue'],
+      imports: ['vue','vue-router','pinia'],
       resolvers: [
         ElementPlusResolver(),
         // Auto import icon components
