@@ -1,19 +1,21 @@
 <template>
   <el-menu>
-    <!-- <sub-menu v-for="item in roleRouters" :key="item.id" :item="item" :path="item.path"></sub-menu> -->
+    <sub-menu
+      v-for="item in sidebarRouters"
+      :key="item.path"
+      :item="item"
+      :path="item.path"
+    ></sub-menu>
   </el-menu>
 </template>
 
-<script>
+<script lang="ts" setup>
 import SubMenu from './submenu.vue'
-import { CACHE_KEY, useCache } from '@/hooks/web/useCache'
-export default {
-  components: { SubMenu },
-  computed: {
-    roleRouters() {
-      const { wsCache } = useCache()
-      return wsCache.get(CACHE_KEY.ROLE_ROUTERS)
-    }
-  }
-}
+import { ref } from 'vue'
+import { usePermissionStore } from '@/store/modules/permission'
+
+const sidebarRouters = ref<AppRouteRecordRaw[]>([])
+const permissionStore = usePermissionStore()
+
+sidebarRouters.value = permissionStore.getAddRouters
 </script>

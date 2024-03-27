@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
 import App from './App.vue'
+import { setupStore } from '@/store'
 import router, { setupRouter } from './router'
 import './assets/styles/index.scss' //无法定位文件夹默认index文件
 import 'element-plus/dist/index.css' //element plus样式文件，需要全局导入
@@ -12,7 +12,7 @@ import { delConfirm } from './utils/delConfirm'
 const setupAll = async () => {
   const app = createApp(App)
 
-  app.use(createPinia())
+  setupStore(app)
 
   app.use(delConfirm)
 
