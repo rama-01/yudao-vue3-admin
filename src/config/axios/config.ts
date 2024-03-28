@@ -1,11 +1,16 @@
-type AxiosHeaders = 'application/json' | 'application/x-www-form-urlencoded' | 'multipart/form-data'  //global.d.ts文件部分类型声明不生效
+type AxiosHeaders = 'application/json' | 'application/x-www-form-urlencoded' | 'multipart/form-data' //global.d.ts文件部分类型声明不生效
 
-const config: {
+export interface AxiosConfig {
   base_url: string
   result_code: number | string
   default_headers: AxiosHeaders
   request_timeout: number
-} = {
+  message?: string
+  background?: string
+  isLoading?: boolean
+}
+
+const config: AxiosConfig = {
   /**
    * api请求基础路径
    */

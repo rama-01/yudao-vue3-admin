@@ -3,12 +3,13 @@ import { getAccessToken } from './utils/auth'
 import { useUserStoreWithOut } from '@/store/modules/user'
 import { usePermissionStoreWithOut } from '@/store/modules/permission'
 import { RouteRecordRaw } from 'vue-router'
+import { usePageLoading } from './hooks/web/usePageLoading'
 
-// 添加路由白名单
 const whiteList = ['/login']
+const { loadStart, loadDone } = usePageLoading()
 
 router.beforeEach(async (to, from, next) => {
-  // debugger
+  loadStart()
   if (getAccessToken()) {
     if (to.path === '/login') {
       next('/')
@@ -17,7 +18,8 @@ router.beforeEach(async (to, from, next) => {
       // 获取并设置字典
       const userStore = useUserStoreWithOut()
       const permissionStore = usePermissionStoreWithOut()
-      if (!userStore.getIsSetUser) {  //error
+      if (!userStore.getIsSetUser) {
+        //error
         // 设置用户信息
         await userStore.setUserInfoAction()
         // 后端过滤菜单,设置权限路由
@@ -28,7 +30,8 @@ router.beforeEach(async (to, from, next) => {
         })
         const redirectPath = from.query.redirect || to.path
         const redirect = decodeURIComponent(redirectPath as string)
-        const nextData = to.path === redirect ? { ...to, replace: true } : { path: redirect }
+        const nextData =
+          to.path === redirect ? { ...to, replace: true } : { path: redirect }
         next(nextData)
       } else {
         next()
@@ -42,3 +45,5 @@ router.beforeEach(async (to, from, next) => {
     }
   }
 })
+
+router.afterEach(() => loadDone())

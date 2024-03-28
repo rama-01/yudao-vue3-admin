@@ -1,28 +1,13 @@
 <template>
-  <tenant-header
-    :searchParams="searchParams"
-    @action-event="handleActionEvent"
-  />
+  <tenant-header :searchParams="searchParams" @action-event="handleActionEvent" />
   <tenant-table :tenantList="tenantList" @action-event="handleActionEvent" />
-  <edit-popup
-    v-model:visible="editPopup.visible"
-    :data="editPopup.data"
-    @action-event="handleActionEvent"
-  />
+  <edit-popup v-model:visible="editPopup.visible" :data="editPopup.data" @action-event="handleActionEvent" />
 </template>
 <script lang="ts" setup>
-import TenantHeader, {
-  TenantForm
-} from '@/business/system/tenant/list/header.vue'
-import TenantTable from '@/business/system/tenant/list/table.vue'
-import EditPopup from '@/business/system/tenant/list/editPopup.vue'
-import {
-  getTenantList,
-  deleteTenant,
-  createTenant,
-  getSingleTenant,
-  updateTenant
-} from '@/api/system/tenant'
+import TenantHeader, { TenantForm } from '@/business/system/tenant/header.vue'
+import TenantTable from '@/business/system/tenant/table.vue'
+import EditPopup from '@/business/system/tenant/editPopup.vue'
+import { getTenantList, deleteTenant, createTenant, getSingleTenant, updateTenant } from '@/api/system/tenant'
 import { getCurrentInstance, ComponentInternalInstance } from 'vue'
 import { ElMessage } from 'element-plus'
 
@@ -37,8 +22,7 @@ const searchParams = reactive<TenantForm>({
   status: undefined,
   createTime: []
 })
-const getList = () =>
-  getTenantList(searchParams).then((res) => (tenantList.value = res.list))
+const getList = () => getTenantList(searchParams).then((res) => (tenantList.value = res?.list ?? []))
 getList()
 
 /* edit popup */
@@ -52,9 +36,7 @@ const { proxy } = getCurrentInstance() as ComponentInternalInstance
 const handleActionEvent = (event, data) => {
   switch (event) {
     case 'delete':
-      proxy?.$confirm('是否删除所选中的数据?', () =>
-        deleteTenant(data).then(() => getList())
-      )
+      proxy?.$confirm('是否删除所选中的数据?', () => deleteTenant(data).then(() => getList()))
       break
     case 'search':
     case 'reset':
