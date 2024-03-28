@@ -40,7 +40,7 @@ export default defineComponent({
       () =>
         unref(layout) === 'cutMenu'
           ? permissionStore.getMenuTabRouters
-          : permissionStore.addRouters /** */
+          : permissionStore.getRouters /** question */
     )
 
     const menuSelect = (index: string) => {

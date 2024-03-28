@@ -3,7 +3,7 @@ import { store } from '../index'
 import { cloneDeep } from 'lodash-es'
 import { flatMultiLevelRoutes, generateRoute } from '@/utils/routerHelper'
 import { CACHE_KEY, useCache } from '@/hooks/web/useCache'
-import { constantRoutes } from '@/router'
+import { constantRoutes } from '@/router/modules/constants'
 
 const { wsCache } = useCache()
 

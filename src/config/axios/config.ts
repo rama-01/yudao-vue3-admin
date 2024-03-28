@@ -5,9 +5,6 @@ export interface AxiosConfig {
   result_code: number | string
   default_headers: AxiosHeaders
   request_timeout: number
-  message?: string
-  background?: string
-  isLoading?: boolean
 }
 
 const config: AxiosConfig = {

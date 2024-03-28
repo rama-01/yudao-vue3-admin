@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosError, AxiosResponse } from 'axios'
-import { config, AxiosConfig } from '@/config/axios/config'
+import { config } from '@/config/axios/config'
 import { getAccessToken, getRefreshToken, removeToken, getTenantId, setToken } from '@/utils/auth'
 import { showFullScreenLoading, tryHideFullScreenLoading } from '@/utils/loading'
 import { useCache } from '@/hooks/web/useCache'
@@ -12,12 +12,23 @@ const service: AxiosInstance = axios.create({
 })
 
 let isRefreshToken = false //是否正在刷新中
+const whiteList = ['/login', '/refresh-token'] //无需token
 
 service.interceptors.request.use(
   (config: InternalAxiosRequestConfig & AxiosConfig) => {
-    config.isLoading = config.isLoading !== undefined && config.isLoading !== null ? config.isLoading : false
     showFullScreenLoading(config)
-    if (getAccessToken()) {
+    config.isLoading = config.isLoading !== undefined && config.isLoading !== null ? config.isLoading : false
+    /** question*/
+    // 是否需要设置Token
+    let shouldSetToken = (config.headers || {}).isToken === false
+    // 不使用forEach，是因为它无法在遍历时中止循环
+    whiteList.some((v) => {
+      if (config.url && config.url.indexOf(v) !== -1) {
+        return (shouldSetToken = false)
+      }
+    })
+
+    if (getAccessToken() && !shouldSetToken) {
       config.headers.Authorization = 'Bearer ' + getAccessToken()
     }
     config.headers['Tenant-Id'] = 1
@@ -57,7 +68,7 @@ service.interceptors.response.use(
           isRefreshToken = false
         }
       } else {
-        // 
+        //
       }
     }
     return response.data

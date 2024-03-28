@@ -37,7 +37,7 @@
  * @description 分发验证码使用
  * */
 import { VerifyPoints, VerifySlide } from './Verify'
-import { computed, ref, toRefs, watchEffect } from 'vue'
+// import { computed, ref, toRefs, watchEffect } from 'vue'
 import {useI18n} from '../../../hooks/web/useI18n'
 
 export default {

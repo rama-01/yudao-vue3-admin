@@ -1,5 +1,5 @@
 <template>
-  <p v-for="(item, index) in data" :key="index">{{ item }}</p>
+  <div>home</div>
 </template>
 <script lang="ts" setup>
 const data = ref<number[]>([])

@@ -30,6 +30,7 @@ declare global {
     method?: AxiosMethod
     headersType?: string
     responseType?: AxiosResponseType
+    isLoading?: boolean
   }
 
   interface IResponse<T = any> {

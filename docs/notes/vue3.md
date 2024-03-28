@@ -5,4 +5,5 @@
    
 ### 2. v-model在vue3和vue2中的区别
 
-### 
+### 常用API疑难
+1. defineProps的使用

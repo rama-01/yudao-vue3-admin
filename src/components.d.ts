@@ -29,6 +29,7 @@ declare module 'vue' {
     ElSubmenu: typeof import('element-plus/es')['ElSubmenu']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    Error: typeof import('./components/Error/src/Error.vue')['default']
     Icon: typeof import('./components/Icon/src/Icon.vue')['default']
     IconSelect: typeof import('./components/Icon/src/IconSelect.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
